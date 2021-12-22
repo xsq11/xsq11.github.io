@@ -1,0 +1,662 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="胥圣权" href="https://xsq11.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="胥圣权" href="https://xsq11.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="胥圣权" href="https://xsq11.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="实验报告" />
+
+
+<link rel="canonical" href="https://xsq11.github.io/2021/12/31/%E5%AE%9E%E9%AA%8C%E4%B8%89/">
+
+
+
+  <title>
+实验三 - 计算机网络实验报告 - 二进制杂谈 - 计算机科学 |
+Moonlight stains no trouble = 胥圣权 = = = 愿你拼命追求的东西，最后都能如你所愿 = =</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">实验三
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2021-12-31 20:45:48">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-12-31T20:45:48+08:00">2021-12-31</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>5.1k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>5 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/note/" itemprop="item" rel="index" title="分类于 二进制杂谈"><span itemprop="name">二进制杂谈</span></a>
+<meta itemprop="position" content="2" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/note/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" itemprop="item" rel="index" title="分类于 计算机网络实验报告"><span itemprop="name">计算机网络实验报告</span></a>
+<meta itemprop="position" content="3" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://xsq11.github.io/2021/12/31/%E5%AE%9E%E9%AA%8C%E4%B8%89/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/head.jpg">
+    <meta itemprop="name" content="月光不染是非">
+    <meta itemprop="description" content="= = 愿你拼命追求的东西，最后都能如你所愿 = =, 愿你拼命追求的东西，最后都能如你所愿">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="胥圣权">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h1>
+<p>这个实验是我做得最艰难的实验，我注册了思科的账号，登陆时它一直给我说这个错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sorry, we can‘t find a NetAcad account associated with this Cisco account.</span><br></pre></td></tr></table></figure>
+<p>我各种百度，结果发现我注册的网站错了。。。（原因可能是因为网站全是英文，我瞎点结果就不晓得点到哪里去了）然后终于注册了正确的网站。下载时老是下载失败，心态炸裂，然后历经 n 次重新下载后终于下好了。此时刚好下课，整整花费了我一节课！<br>
+老师网站上给的备用下载链接不能用了，只能去官网下。实验教程链接可以打开，但是点进去后只有目录，点击目录报 404。</p>
+<h1 id="直接连接两台-pc-构建-lan"><a class="markdownIt-Anchor" href="#直接连接两台-pc-构建-lan">#</a> 直接连接两台 PC 构建 LAN</h1>
+<div class="note info">
+<p>将两台 PC 直接连接构成一个网络。注意：直接连接需使用交叉线。</p>
+<p>进行两台 PC 的基本网络配置，只需要配置 IP 地址即可，然后相互  <code>ping</code>  通即成功。</p>
+</div>
+<p><code>pc0</code> <br>
+<img data-src="/assets/3.1.png" alt=""><br>
+ <code>pc1</code> <br>
+<img data-src="/assets/3.2.png" alt=""><br>
+ <code>pc0 ping pc1</code> <br>
+<img data-src="/assets/3.3.png" alt=""></p>
+<h1 id="用交换机构建-lan"><a class="markdownIt-Anchor" href="#用交换机构建-lan">#</a> 用交换机构建 LAN</h1>
+<p><code>构建如下拓扑结构的局域网：</code> <br>
+<img data-src="/assets/3.4.png" alt=""><br>
+ <code>各PC的基本网络配置如下表：</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">机器名   IP            子网掩码</span><br><span class="line">PC0      192.168.1.1   255.255.255.0</span><br><span class="line">PC1      192.168.1.2   255.255.255.0</span><br><span class="line">PC2      192.168.2.1   255.255.255.0</span><br><span class="line">PC3      192.168.2.2   255.255.255.0</span><br></pre></td></tr></table></figure>
+<div class="note warning">
+<p>✎ 问题<br>
+ 1、PC0 能否 ping 通 PC1、PC2、PC3 ？<br>
+2、PC3 能否 ping 通 PC0、PC1、PC2 ？为什么？<br>
+3、将 4 台 PC 的掩码都改为 255.255.0.0 ，它们相互能 ping 通吗？为什么？<br>
+4、使用二层交换机连接的网络需要配置网关吗？为什么？</p>
+</div>
+<p><code>PC0 ping PC1</code> <br>
+<img data-src="/assets/3.5.png" alt=""><br>
+ 可以看到成功 ping 通。但 PC0 不能 ping 通 PC2、PC3，因为它们不是在同一个局域网下。<br>
+同理，PC3 可以 png 通 PC2, 但不能 ping 通 PC0、PC1。<br>
+如果改子网掩码都为 255.255.0.0，那么这些主机都会位于同一子网下，此时就可以 ping 通了。</p>
+<h1 id="交换机接口地址列表"><a class="markdownIt-Anchor" href="#交换机接口地址列表">#</a> 交换机接口地址列表</h1>
+<p><code>查看最初的mac地址表(前面实验ping了一次，所以不为空)</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Switch&gt;enable</span><br><span class="line">Switch#show mac ad</span><br><span class="line">          Mac Address Table</span><br><span class="line">-------------------------------------------</span><br><span class="line"></span><br><span class="line">Vlan    Mac Address       Type        Ports</span><br><span class="line">----    -----------       --------    -----</span><br><span class="line"></span><br><span class="line">   1    0001.9738.c619    DYNAMIC     Gig0/1</span><br></pre></td></tr></table></figure>
+<p><code>PC0 再ping PC1,此时会多几个记录,这就是交换机自动学习获得的</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Switch#show mac ad</span><br><span class="line">          Mac Address Table</span><br><span class="line">-------------------------------------------</span><br><span class="line"></span><br><span class="line">Vlan    Mac Address       Type        Ports</span><br><span class="line">----    -----------       --------    -----</span><br><span class="line"></span><br><span class="line">   1    0001.9738.c619    DYNAMIC     Gig0/1</span><br><span class="line">   1    0002.4a22.0635    DYNAMIC     Fa0/1</span><br><span class="line">   1    0060.2f35.0b4d    DYNAMIC     Fa0/2</span><br></pre></td></tr></table></figure>
+<h1 id="生成树协议"><a class="markdownIt-Anchor" href="#生成树协议">#</a> 生成树协议</h1>
+<p>这个就是当交换机在接收方目的地址未知、收到广播帧等情况时，交换机要进行广播。那么此时，如果交换机之间存在回路 / 环路，那么就会产生广播循环风暴，从而严重影响网络性能，也就是你广播给我，我广播给你，大家一起广播自己。<br>
+ <code>假设交换机的拓扑结构如下(盗用一下老师的原图)</code> <br>
+<img data-src="/assets/3.7.png" alt=""><br>
+ 此结构有环，所以一定要采用生成树协议。生成树协议（STP）可以自动的对多余的线路进行自动阻塞（Blocking），以形成一棵具有唯一路径树即生成树！<br>
+而且随着 STP 协议成功构建了生成树后，Switch5 的两个接口当前物理上是连接的，但逻辑上是不通的。但如果某个时候 Switch4 与 Switch5 之间的物理连接出现问题（将 Switch4 与 Switch5 的连线剪掉），则该生成树将自动发生变化，之前不通的结点又通了。非常厉害了。</p>
+<h1 id="路由器配置初步"><a class="markdownIt-Anchor" href="#路由器配置初步">#</a> 路由器配置初步</h1>
+<p><code>以太网接口</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router&gt;enable   // 从普通模式进入特权模式</span><br><span class="line">Router#configure terminal   // 进入全局配置模式</span><br><span class="line">Router(config)#interface f0/0   // 进入配置以太网口模式</span><br><span class="line">Router(config-if)#ip address 192.168.1.1 255.255.255.0   // 配置该接口的 IP</span><br><span class="line">Router(config-if)#no shutdown   // 激活接口</span><br><span class="line">Router(config-if)#^z   // 直接退到特权模式</span><br><span class="line">Router#</span><br></pre></td></tr></table></figure>
+<p><code>广域网接口</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Router&gt;en   // 从普通模式进入特权模式</span><br><span class="line">Router#conf t   // 进入全局配置模式</span><br><span class="line">Router(config)#int s0/0   // 进入配置广域网口模式</span><br><span class="line">Router(config-if)#ip address 192.168.2.1 255.255.255.0   //配置该接口的 IP</span><br><span class="line">Router(config-if)#clock rate 64000    // 其为 DCE 端，配置时钟频率</span><br><span class="line">Router(config-if)#no shutdown   // 激活接口</span><br><span class="line">Router(config-if)#^z   // 直接退到特权模式</span><br><span class="line">Router#</span><br></pre></td></tr></table></figure>
+<p><code>按着老师网页上给的配置教程完成配置如下</code> <br>
+<img data-src="/assets/3.6.png" alt=""></p>
+<div class="note warning">
+<p>✎ 问题<br>
+现在交通大学内的各 PC 及网关相互能 ping 通，重庆大学也类似。但不能从交大的 PC ping 通重大的 PC，反之亦然，也即不能跨子网。为什么？</p>
+</div>
+<p>因为此时的路由表还未构建，所以无法完成局域网以外的通信。</p>
+<h1 id="静态路由"><a class="markdownIt-Anchor" href="#静态路由">#</a> 静态路由</h1>
+<p><code>静态路由配置：</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router&gt;en   // 从普通模式进入特权模式</span><br><span class="line">Router#conf t   // 进入全局配置模式</span><br><span class="line">Router(config)#ip route 192.168.3.0 255.255.255.0 192.168.2.2   // 告诉交通大学路由器到 192.168.3.0 这个网络的下一跳是 192.168.2.2</span><br><span class="line">Router(config)#exit   //退到特权模式</span><br><span class="line">Router#show ip route    //查看路由表</span><br></pre></td></tr></table></figure>
+<p><code>查看路由表</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Router#show ip route</span><br><span class="line">Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP</span><br><span class="line">       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area</span><br><span class="line">       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2</span><br><span class="line">       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP</span><br><span class="line">       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area</span><br><span class="line">       * - candidate default, U - per-user static route, o - ODR</span><br><span class="line">       P - periodic downloaded static route</span><br><span class="line"></span><br><span class="line">Gateway of last resort is not set</span><br><span class="line"></span><br><span class="line">C    192.168.1.0/24 is directly connected, FastEthernet0/0</span><br><span class="line">C    192.168.2.0/24 is directly connected, Serial0/0</span><br><span class="line">S    192.168.3.0/24 [1/0] via 192.168.2.2</span><br></pre></td></tr></table></figure>
+<p>此时两个学校就可以 ping 通了，结果如下：<br>
+<img data-src="https://img-blog.csdnimg.cn/img_convert/0b8a342562797b4be76e30e0c7a45ea8.png" alt=""></p>
+<h1 id="动态路由rip"><a class="markdownIt-Anchor" href="#动态路由rip">#</a> 动态路由 RIP</h1>
+<p><code>清除静态路由配置：</code> <br>
+1、直接关闭路由器电源。相当于没有保存任何配置，然后各接口再按照前面基本配置所述重新配置 IP 等参数（推荐此方法，可以再熟悉一下接口的配置命令）；<br>
+2、使用  <code>no</code>  命令清除静态路由。在全局配置模式下，交通大学路由器使用： <code>no ip route 192.168.3.0 255.255.255.0 192.168.2.2</code> ，重庆大学路由器使用： <code>no ip route 192.168.1.0 255.255.255.0 192.168.2.1</code>  。相当于使用 no 命令把刚才配置的静态路由命令给取消。<br>
+ <code>路由器 RIP 路由配置：</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Router&gt;en   // 从普通模式进入特权模式</span><br><span class="line">Router#conf t   // 进入全局配置模式</span><br><span class="line">Router(config)#router rip   // 启用 RIP 路由协议，注意是 router 命令</span><br><span class="line">Router(config-router)#network 192.168.1.0   // 网络 192.168.1.0 与我直连</span><br><span class="line">Router(config-router)#network 192.168.2.0   // 网络 192.168.2.0 与我直连</span><br><span class="line">Router(config-router)#^z   //直接退到特权模式</span><br><span class="line">Router#show ip route    //查看路由表</span><br></pre></td></tr></table></figure>
+<p>此时两个学校同样可以 ping 通。</p>
+<h1 id="动态路由ospf"><a class="markdownIt-Anchor" href="#动态路由ospf">#</a> 动态路由 OSPF</h1>
+<p><code>清除 RIP 路由配置：</code> <br>
+1、直接关闭路由器电源。相当于没有保存任何配置，然后各接口再按照前面基本配置所述重新配置 IP 等参数<br>
+ 2、使用  <code>no</code>  命令清除 RIP 路由。在全局配置模式下，各路由器都使用： <code>no router rip</code>  命令进行清除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router&gt;en   // 从普通模式进入特权模式</span><br><span class="line">Router#conf t   // 进入全局配置模式</span><br><span class="line">Router(config)#router ospf 1   // 启用 OSPF 路由协议，进程号为1（可暂不理会进程号概念）</span><br><span class="line">Router(config-router)#network 192.168.1.0 0.0.0.255 area 0   // 自治域0中的属于 192.168.1.0/24 网络的所有主机（反向掩码）参与 OSPF</span><br><span class="line">Router(config-router)#network 192.168.2.0 0.0.0.255 area 0   // 自治域0中的属于 192.168.2.0/24 网络的所有主机（反向掩码）参与 OSPF</span><br><span class="line">Router(config-router)#^z   //直接退到特权模式</span><br><span class="line">Router#show ip route    //查看路由表</span><br></pre></td></tr></table></figure>
+<h2 id="比较-rip-和-ospf"><a class="markdownIt-Anchor" href="#比较-rip-和-ospf">#</a> 比较 RIP 和 OSPF</h2>
+<p><code>我个人认为RIP主要通过邻居获取路由表，第一次获取自己邻居的路由表，第二次获取邻居的邻居，依次类推。这样会比较慢，如果有邻居更新了不能很快地获取到。 OSPF则是一次向所有获取的路由表，是通过网络层传送数据。</code></p>
+<h1 id="基于端口的网络地址翻译-pat"><a class="markdownIt-Anchor" href="#基于端口的网络地址翻译-pat">#</a> 基于端口的网络地址翻译 PAT</h1>
+<div class="note info">
+<p>网络地址转换（NAT，Network Address Translation）被各个 Internet 服务商即 ISP 广泛应用于它们的网络中，也包括 WiFi 网络。 原因很简单，NAT 不仅完美地解决了 lP 地址不足的问题，而且还能够有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机。</p>
+</div>
+<p><code>个人对NAT(网络地址转换)、PAT(端口地址转换)的理解</code> <br>
+ 1、NAT 严格意义上不进行端口地址转换，因此并不节省公网 ip 地址，同一时间只能有一个内网用户使用。<br>
+2、PAT 可以实现节省公网 ip 地址。假设一个内网有一个公网 <code>ipG</code> ，2 个内网 ip： <code>ip1</code> 、 <code>ip2</code> 。A 用户使用 <code>ip1:8080</code>  端口进行上网，B 用户使用 <code>ip2:8080</code>  端口进行上网。</p>
+<div class="note warning">
+<p>主意，此时两个用户用不同的内网 ip，相同的端口上网。</p>
+</div>
+<p>那么当他们的包到达路由器时，不管他们真实情况使用的那个端口，路由器都会将其按照某一标准重新分配端口。即 A 用户对外变为 <code>ipG:4000</code> ,B 变为 <code>ipG:4001</code> 。这样就实现了内部 ip 上网。<br>
+当外部数据来时，路由器根据返回端口就知道该数据是给内网哪一个用户的了。</p>
+<h1 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h1>
+<p>💡通过这学期网络的学习，解决了我以前困惑已久的问题：</p>
+<div class="note warning">
+<p>1、通过 ip 可以定位到别人吗？<br>
+答：虽然 ip 地址在网络上是唯一确定的，现在 ip 地址早就被用完了。我们日常上网的 ip 是被很多人共用的，如果单单通过 ip 地址很难准确定位到某个人。但是可以获取他的大致范围。亏我以前还天真的以为拿到 ip 地址就可以定位到我了。当然虽然单单 ip 地址不能定位，但有其他方法可以，所以网络很不安全！</p>
+</div>
+<div class="note warning">
+<p>2、既然 ip 地址用完了，我们平时怎么上网的？<br>
+答：前面刚刚提到的 PAT 技术很好地解决了此问题。此外我们不是还有 ipv6 吗？</p>
+</div>
+<p>这两个问题真的困惑了我很久。此外，我觉得王老师上课真的很有意思，不仅教会我们知识，还给我们讲了很多课本以外的。<span class="spoiler" title="...">虽然被别人说负能量</span>，但这些就是社会上的一些现象，只是很多人都对此司空见惯或者沉默。<br>
+而且，王老师对我们报告的格式没有要求，所以我才敢这样随性地写报告，<span class="spoiler" title="...">要是那种格式化的报告，那我也只能老老实实规格矩矩的写了</span>。<br>
+好了，致此结束了！<span class="spoiler" title="...">虽然我实验没做完</span></p>
+
+      <div class="tags">
+          <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" rel="tag"><i class="ic i-tag"></i> 实验报告</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2021-12-22 21:36:33" itemprop="dateModified" datetime="2021-12-22T21:36:33+08:00">2021-12-22</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="月光不染是非 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="月光不染是非 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="月光不染是非 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>月光不染是非 <i class="ic i-at"><em>@</em></i>胥圣权
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://xsq11.github.io/2021/12/31/%E5%AE%9E%E9%AA%8C%E4%B8%89/" title="实验三">https://xsq11.github.io/2021/12/31/实验三/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2020/08/13/computer-science/note/theme-shoka-doc/special/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexw3o58j20zk0m8e81.jpg" title="Step.4 主题特殊功能">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> Theme Shoka Documentation</span>
+  <h3>Step.4 主题特殊功能</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/12/31/%E5%AE%9E%E9%AA%8C%E4%BA%8C/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclj9410cj20zk0m8h12.jpg" title="实验二">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 计算机网络实验报告</span>
+  <h3>实验二</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E8%BF%9E%E6%8E%A5%E4%B8%A4%E5%8F%B0-pc-%E6%9E%84%E5%BB%BA-lan"><span class="toc-number">2.</span> <span class="toc-text"> 直接连接两台 PC 构建 LAN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%9E%84%E5%BB%BA-lan"><span class="toc-number">3.</span> <span class="toc-text"> 用交换机构建 LAN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%8E%A5%E5%8F%A3%E5%9C%B0%E5%9D%80%E5%88%97%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text"> 交换机接口地址列表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text"> 生成树协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E9%85%8D%E7%BD%AE%E5%88%9D%E6%AD%A5"><span class="toc-number">6.</span> <span class="toc-text"> 路由器配置初步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">7.</span> <span class="toc-text"> 静态路由</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1rip"><span class="toc-number">8.</span> <span class="toc-text"> 动态路由 RIP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1ospf"><span class="toc-number">9.</span> <span class="toc-text"> 动态路由 OSPF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83-rip-%E5%92%8C-ospf"><span class="toc-number">9.1.</span> <span class="toc-text"> 比较 RIP 和 OSPF</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%AB%AF%E5%8F%A3%E7%9A%84%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E7%BF%BB%E8%AF%91-pat"><span class="toc-number">10.</span> <span class="toc-text"> 基于端口的网络地址翻译 PAT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">11.</span> <span class="toc-text"> 总结</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2021/12/31/%E5%AE%9E%E9%AA%8C%E4%B8%80/" rel="bookmark" title="实验一">实验一</a></li><li><a href="/2021/12/31/%E5%AE%9E%E9%AA%8C%E4%BA%8C/" rel="bookmark" title="实验二">实验二</a></li><li class="active"><a href="/2021/12/31/%E5%AE%9E%E9%AA%8C%E4%B8%89/" rel="bookmark" title="实验三">实验三</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="月光不染是非"
+      data-src="/images/head.jpg">
+  <p class="name" itemprop="name">月光不染是非</p>
+  <div class="description" itemprop="description">愿你拼命追求的东西，最后都能如你所愿</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">6</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">6</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3hzcTEx" title="https:&#x2F;&#x2F;github.com&#x2F;xsq11"><i class="ic i-github"></i></span>
+      <span class="exturl item csdn" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hzcXhzcXg/c3BtPTEwMDAuMjExNS4zMDAxLjUzNDM=" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;xsqxsqx?spm&#x3D;1000.2115.3001.5343"><i class="ic i-instagram"></i></span>
+      <span class="exturl item bokeyuan" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20veHNxLS8=" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xsq-&#x2F;"><i class="ic i-stack-overflow"></i></span>
+      <a href="/1747816101@qq.com" title="1747816101@qq.com" class="item email"><i class="ic i-envelope"></i></a>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2020/08/13/computer-science/note/theme-shoka-doc/special/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/12/31/%E5%AE%9E%E9%AA%8C%E4%BA%8C/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/07/24/markdown/" title="Markdown Style test">Markdown Style test</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2013/12/24/tags/" title="Tags">Tags</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2013/12/24/elements/" title="Elements">Elements</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2013/12/24/long-title/" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam justo turpis, tincidunt ac convallis id.">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam justo turpis, tincidunt ac convallis id.</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/java/course-1/" title="分类于 零基础学Java语言-浙江大学-翁恺">零基础学Java语言-浙江大学-翁恺</a>
+</div>
+
+    <span><a href="/2020/04/12/computer-science/java/course-1/week-1/" title="第1周 计算">第1周 计算</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2013/12/25/tag-plugins/" title="Tag Plugins">Tag Plugins</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><span class="exturl" data-url="aHR0cDovL3d3dy5nb29nbGUuY29tLw==" title="Link Post">Link Post<i class="ic i-link-alt"></i></span></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/note/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/note/theme-shoka-doc/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/computer-science/note/theme-shoka-doc/special/" title="Step.4 主题特殊功能">Step.4 主题特殊功能</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/note/" title="分类于 二进制杂谈">二进制杂谈</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/note/theme-shoka-doc/" title="分类于 Theme Shoka Documentation">Theme Shoka Documentation</a>
+</div>
+
+    <span><a href="/2020/08/13/computer-science/note/theme-shoka-doc/dependents/" title="Step.1 依赖插件">Step.1 依赖插件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2013/12/24/%E4%B8%AD%E6%96%87%E6%B8%AC%E8%A9%A6/" title="中文測試">中文測試</a></span>
+  </li>
+
+  </ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">月光不染是非 @ Moonlight stains no trouble</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">68k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:02</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/12/31/实验三/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: {"placeholder":"1. 提问前请先仔细阅读本文档⚡\n2. 页面显示问题💥，请提供控制台截图📸或者您的测试网址\n3. 其他任何报错💣，请提供详细描述和截图📸，祝食用愉快💪"},fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
